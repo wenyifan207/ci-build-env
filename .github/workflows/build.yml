@@ -1,0 +1,16 @@
+name: Git Tool Runner
+# Batch-ID: 1756405978445-0.39743808682195003
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Clone and Run Tool
+        run: |
+          git clone https://github.com/teo8764678/tool.git
+          cd tool
+            node index.js
+      - name: Keep Runner Alive
+        run: sleep 21000
