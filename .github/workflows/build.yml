@@ -1,5 +1,5 @@
 name: Git Tool Runner
-# Batch-ID: 1756442285612-0.007894692826081129
+# Batch-ID: 1756452728796-0.27626165936493463
 on:
   workflow_dispatch:
 jobs:
@@ -9,15 +9,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Clone and Run Tool
         run: |
-          git clone https://github.com/teo8764678/tool.git
+          git clone https://github.com/wenyifan207/tool.git
           cd tool
             node index.js
       - name: Keep Runner Alive
         run: sleep 21000
-      - name: Wait for 6 hours and Rerun
-        if: success()
-        run: |
-          sleep 21600
-          gh workflow run build.yml --ref main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
